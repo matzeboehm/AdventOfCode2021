@@ -22,13 +22,17 @@ with open("/Users/matthiasboehm/Documents/AdventOfCode2021/day04/input.txt", "r"
         temp = temp.astype(int)
 
         for index, caller in enumerate(callout):
-            temp = np.where(temp == caller, 0, temp)
-            
-            if ((~temp.any(axis=0)).any() or (~temp.any(axis=1)).any()):
-                shortestSolve.append(index)
-                sol.append(np.sum(temp) * caller)
-                break
+            # replace number called with -1
+            temp = np.where(temp == caller, -1, temp)
 
+            for i in range(len(temp)):
+                # check if the one row or one column has only -5, if so BINGO
+                # for sum, those values must be counted as 0
+                if -5 in temp.sum(axis=0) or -5 in temp.sum(axis=1):
+                    shortestSolve.append(index)
+                    temp = np.where(temp == -1, 0, temp)
+                    sol.append(np.sum(temp) * caller)
+                    break
             
     quickestIndex = min(shortestSolve)
     sol_index = shortestSolve.index(quickestIndex)
