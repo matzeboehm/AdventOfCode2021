@@ -36,4 +36,3 @@ with open("/Users/matthiasboehm/Documents/AdventOfCode2021/day04/input.txt", "r"
     quickestIndex = min(shortestSolve)
     sol_index = shortestSolve.index(quickestIndex)
     print(sol[sol_index])
-    print(len(sol))
