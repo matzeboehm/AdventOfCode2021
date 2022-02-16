@@ -1,4 +1,3 @@
-from curses import flash
 import numpy as np
 
 with open("input.txt", "r") as file:
