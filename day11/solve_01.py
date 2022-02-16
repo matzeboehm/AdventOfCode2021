@@ -15,7 +15,7 @@ with open("input.txt", "r") as file:
         for j, val in enumerate(line.strip()):
             input[i][j] = int(val)
 
-    # steps = 100
+    #steps = 100
     steps = 250
     flashCounter = 0
     brightestFlash = []
@@ -61,4 +61,5 @@ with open("input.txt", "r") as file:
         print(input)
 
     print("Flash Counter %i" %(flashCounter))
-    print(sorted(brightestFlash))
+    if brightestFlash:
+        print(brightestFlash[0])
