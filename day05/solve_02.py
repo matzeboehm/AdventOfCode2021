@@ -1,7 +1,6 @@
-import numbers
 import numpy as np
 
-with open("/Users/matthiasboehm/Documents/AdventOfCode2021/day05/input.txt", "r") as file:
+with open("input.txt", "r") as file:
     lines = file.readlines()
     maximumSize = 0
 
