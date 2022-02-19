@@ -1,4 +1,4 @@
-with open("/Users/matthiasboehm/Documents/AdventOfCode2021/day08/input.txt", "r") as file:
+with open("input.txt", "r") as file:
     lines = file.readlines()
     
     zero = "abcefg"   # len 6
