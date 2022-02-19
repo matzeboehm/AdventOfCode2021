@@ -1,4 +1,4 @@
-with open("/Users/matthiasboehm/Documents/AdventOfCode2021/day03/input.txt", "r") as file:
+with open("input.txt", "r") as file:
     lines = file.readlines()
 
     string = [str(i).strip() for i in lines]
