@@ -1,7 +1,6 @@
-from subprocess import call
 import numpy as np
 
-with open("/Users/matthiasboehm/Documents/AdventOfCode2021/day04/input.txt", "r") as file:
+with open("input.txt", "r") as file:
     lines = file.readlines()
 
     callout = lines[0].replace("\n", "").split(",")
