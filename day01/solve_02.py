@@ -1,4 +1,4 @@
-with open("/Users/matthiasboehm/Documents/AdventOfCode2021/day01/input.txt", "r") as file:
+with open("input.txt", "r") as file:
     lines = file.readlines()
     lines = [int(i) for i in lines]
     counter = 0
