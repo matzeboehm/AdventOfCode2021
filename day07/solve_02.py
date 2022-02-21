@@ -1,5 +1,3 @@
-from random import gauss
-
 def gausssum(number):
     return int((number*(number+1))/2)
     
