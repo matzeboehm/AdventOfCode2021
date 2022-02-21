@@ -1,4 +1,4 @@
-with open("/Users/matthiasboehm/Documents/AdventOfCode2021/day14/input.txt", "r") as file:
+with open("input.txt", "r") as file:
     lines = file.readlines()
 
     inputPolymer = lines[0].strip()
@@ -12,7 +12,7 @@ with open("/Users/matthiasboehm/Documents/AdventOfCode2021/day14/input.txt", "r"
             lookupTable[lookup.strip()] = value.strip()
 
     savedInput = inputPolymer
-    for i in range(steps):
+    for step in range(steps):
         string = ""
         for i in range(len(savedInput) - 1):
             lookupValue = lookupTable.get(savedInput[i:i+2])
