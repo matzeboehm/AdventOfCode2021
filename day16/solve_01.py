@@ -1,9 +1,10 @@
 def unfold(bitpack):
-    if len(bitpack) < 6: return bitpack, 0
+    if len(bitpack) < 6: 
+        return bitpack, 0
     
     packetVersion = int(bitpack[0:3], 2)
     packetID = int(bitpack[3:6], 2)
-    print(packetVersion)
+
     global versionCounter
     versionCounter += packetVersion
 
