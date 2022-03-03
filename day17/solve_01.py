@@ -1,12 +1,12 @@
 x_target = (153, 199)
 y_target = (-114, -75)
+
 xt_min = min(x_target)
 xt_max = max(x_target)
 yt_min = min(y_target)
 yt_max = max(y_target)
 
 maxHeight = 0
-possibleSolutions = []
 
 for vx_s in range(1,150):
     for vy_s in range(1,150):
