@@ -1,31 +1,66 @@
-class Node:
-    def __init__(self, name):
-        self.name = name
-        self.childNode = []
+from collections import defaultdict
 
-    def setChildNode(self, childNode):
-        self.childNode.append(childNode)
-    
-    def getChildNode(self):
-        return self.childNode
+class Graph:
+    def __init__(self):
+        self.vertices = 0
+        self.uniqueValues = {}
+        self.graph = {}
+        self.pathsThroughCave = []
 
-with open("/Users/matthiasboehm/Documents/AdventOfCode2021/day12/test.txt", "r") as file:
+    def addEdge(self, startNode, endNode):
+        if startNode in self.graph:
+            self.graph[startNode].append(endNode)
+        else:
+            self.graph[startNode] = [endNode]
+
+        if startNode not in self.uniqueValues:
+            self.vertices += 1
+            self.uniqueValues[startNode] = False
+        if endNode not in self.uniqueValues:
+            self.vertices += 1
+            self.uniqueValues[endNode] = False
+
+    def printAllPaths(self, start, end, visited, path):
+        if start.islower(): # visit only once
+            visited[start] = True
+        else:   # visit multiple times
+            visited[start] = False
+        path.append(start)
+
+        if start == end:
+            print(path)
+            self.pathsThroughCave.append(path[:]) # attach copy of list otherwise the reference is empty
+        else:
+            for i in self.graph.get(start):
+                if visited[i] == False:
+                    self.printAllPaths(i, end, visited, path)
+            
+        path.pop()
+        visited[start] = False
+
+    def traverse(self, start, end):
+        visited = self.uniqueValues.copy()
+        path = []
+        self.printAllPaths(start, end, visited, path)
+
+    def printGraph(self):
+        print(self.graph)
+
+    def printPathsThroughCave(self):
+        print(self.pathsThroughCave)
+        print("Amount of paths %i" %(len(self.pathsThroughCave)))
+
+
+with open("input.txt", "r") as file:
     lines = file.readlines()
-    lines = [line.strip() for line in lines]
-
-    uniquePoints = {}
+    
+    graph = Graph()
 
     for line in lines:
-        startPoint, endPoint = line.split("-")
+        start, end = line.strip().split("-")
+        graph.addEdge(start, end)
+        graph.addEdge(end, start)
 
-        if startPoint not in uniquePoints.keys():
-            uniquePoints[startPoint] = Node(startPoint)
-        if endPoint not in uniquePoints.keys():
-            uniquePoints[endPoint] = Node(endPoint)
-
-        if uniquePoints.get(endPoint) not in uniquePoints.get(startPoint).getChildNode():
-            uniquePoints[startPoint].setChildNode(uniquePoints[endPoint])
-    
-
-    print(uniquePoints)
-    print(lines)
+    graph.printGraph()
+    graph.traverse("start", "end")
+    graph.printPathsThroughCave()
